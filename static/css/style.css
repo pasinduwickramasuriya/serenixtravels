@@ -1,0 +1,299 @@
+:root {
+    --luxury-gold: #c5a059;
+    --luxury-emerald: #064e3b;
+    --luxury-dark: #022c22;
+    --luxury-pearl: #fdfbf7;
+    --luxury-sand: #f3efea;
+    --text-gold: #b38b3f;
+    --transition-slow: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    --transition-fast: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: var(--luxury-pearl);
+    color: var(--luxury-dark);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* Serif Font for Headings */
+h1, h2, h3, .serif {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+/* Luxury Navbar */
+nav {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2.5rem 8%;
+    transition: var(--transition-fast);
+}
+
+nav.scrolled {
+    position: fixed;
+    background: white;
+    padding: 1.2rem 8%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: white;
+}
+
+nav.scrolled .logo {
+    color: var(--luxury-emerald);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.85rem;
+    transition: var(--transition-fast);
+}
+
+nav.scrolled a {
+    color: var(--luxury-dark);
+}
+
+nav a:hover {
+    color: var(--luxury-gold);
+}
+
+/* Hero Section - Immersive Luxury */
+.hero {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-item {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: zoomOut 20s infinite alternate;
+}
+
+@keyframes zoomOut {
+    from { transform: scale(1.1); }
+    to { transform: scale(1); }
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(2, 44, 34, 0.8), transparent);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1400px;
+    width: 84%;
+    color: white;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 10vw, 7rem);
+    line-height: 0.9;
+    margin-bottom: 2rem;
+}
+
+.hero-sub {
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--luxury-gold);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.btn-luxury {
+    display: inline-block;
+    padding: 1.2rem 3rem;
+    border: 1px solid white;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-luxury:hover {
+    background: white;
+    color: var(--luxury-emerald);
+    transform: translateY(-5px);
+}
+
+/* Sections */
+section {
+    padding: 120px 8%;
+}
+
+.section-label {
+    display: block;
+    text-align: center;
+    color: var(--text-gold);
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-size: 4rem;
+    text-align: center;
+    margin-bottom: 5rem;
+    color: var(--luxury-emerald);
+}
+
+/* Luxury Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 4rem;
+}
+
+.card {
+    grid-column: span 6;
+    position: relative;
+}
+
+.card:nth-child(even) {
+    margin-top: 100px;
+}
+
+.card-img-container {
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-slow);
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+.card-content {
+    margin-top: 2rem;
+}
+
+.card-title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--luxury-emerald);
+}
+
+.card-price {
+    font-size: 1.2rem;
+    color: var(--text-gold);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 1.5rem;
+}
+
+/* Newsletter - Elegant */
+.newsletter {
+    background: var(--luxury-emerald);
+    color: white;
+    padding: 100px 8%;
+    text-align: center;
+}
+
+.newsletter h3 {
+    font-size: 3rem;
+    margin-bottom: 3rem;
+}
+
+.newsletter input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    padding: 1rem 0;
+    width: 100%;
+    max-width: 500px;
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    outline: none;
+    transition: var(--transition-fast);
+}
+
+.newsletter input:focus {
+    border-color: var(--luxury-gold);
+}
+
+.newsletter button {
+    background: var(--luxury-gold);
+    color: white;
+    border: none;
+    padding: 1.2rem 4rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+/* Footer */
+footer {
+    padding: 80px 8%;
+    background: var(--luxury-sand);
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 4rem;
+}
+
+@media (max-width: 1024px) {
+    .card { grid-column: span 12; }
+    .card:nth-child(even) { margin-top: 0; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 4rem; }
+}

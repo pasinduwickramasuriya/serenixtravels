@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="pt-40 pb-32 px-8 bg-slate-900 text-white overflow-hidden relative">
+    <!-- Background Decor -->
+    <div class="absolute -top-24 -right-24 w-[600px] h-[600px] bg-indigo-600/20 rounded-full blur-[120px] -z-0"></div>
+    
+    <div class="max-w-7xl mx-auto relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div class="space-y-12">
+            <span class="inline-block py-2 px-4 bg-indigo-500/20 text-indigo-300 rounded-full text-xs font-bold uppercase tracking-widest border border-indigo-500/30">Our Legacy</span>
+            <h1 class="text-7xl md:text-9xl font-black tracking-tighter leading-[0.8]">The<br><span class="text-indigo-400 italic font-serif">Serenix</span><br>Vision.</h1>
+            <p class="text-xl text-slate-400 max-w-md leading-relaxed italic">
+                Founded in 2026, we redefine travel as a soul-searching experience, blending the raw beauty of Sri Lanka with modern boutique luxury.
+            </p>
+        </div>
+        
+        <div class="relative">
+            <div class="aspect-[4/5] rounded-[60px] overflow-hidden shadow-2xl border-8 border-white/5 grayscale hover:grayscale-0 transition-all duration-1000">
+                <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=1200&q=80" alt="About" class="w-full h-full object-cover">
+            </div>
+            <div class="absolute -bottom-12 -left-12 bg-indigo-600 p-12 rounded-[40px] shadow-2xl hidden md:block">
+                <div class="text-6xl font-black mb-2">15+</div>
+                <div class="text-indigo-200 text-xs font-bold uppercase tracking-widest">Exclusive Destinations</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-32 px-8 bg-white">
+    <div class="max-w-4xl mx-auto text-center space-y-12">
+        <h2 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900">Why we exist.</h2>
+        <p class="text-2xl text-slate-500 font-medium leading-relaxed italic">
+            "Most travel agencies show you a place. We invite you to live its rhythm, to taste its heritage, and to find your own piece of serenity in the pearl of the Indian Ocean."
+        </p>
+        <div class="pt-12 flex justify-center gap-16">
+            <div class="text-center">
+                <div class="text-4xl font-black text-slate-900 mb-2">100%</div>
+                <div class="text-slate-400 text-xs font-bold uppercase tracking-widest">Bespoke</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-black text-slate-900 mb-2">24/7</div>
+                <div class="text-slate-400 text-xs font-bold uppercase tracking-widest">Concierge</div>
+            </div>
+            <div class="text-center">
+                <div class="text-4xl font-black text-slate-900 mb-2">Eco</div>
+                <div class="text-slate-400 text-xs font-bold uppercase tracking-widest">Conscious</div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="pt-40 pb-24 px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-24 gap-8 border-b border-slate-100 pb-12">
+            <div class="max-w-2xl">
+                <span class="text-indigo-600 font-bold uppercase tracking-widest text-xs mb-4 block">Our Journal</span>
+                <h1 class="text-6xl md:text-8xl font-black tracking-tighter text-slate-900 leading-[0.8]">Travel<br><span class="text-indigo-600 italic font-serif">Stories</span>.</h1>
+            </div>
+            <p class="text-slate-500 max-w-sm text-sm font-medium leading-relaxed">
+                Dive into our collection of travel stories, tips, and hidden gems from across the teardrop island.
+            </p>
+        </div>
+
+        <div class="space-y-32">
+            {% for post in posts %}
+            <article class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="{% if forloop.counter|divisibleby:2 %}lg:order-2{% endif %} relative">
+                    <div class="aspect-[16/10] rounded-[60px] overflow-hidden shadow-2xl group cursor-pointer">
+                        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+                    </div>
+                    <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-indigo-50 rounded-full -z-10 blur-3xl opacity-50"></div>
+                </div>
+                
+                <div class="space-y-8">
+                    <div class="flex items-center gap-6">
+                        <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-indigo-600 bg-indigo-50 py-1 px-4 rounded-full">Article</span>
+                        <time class="text-xs font-bold text-slate-400 uppercase tracking-widest">{{ post.created_at|date:"M d, Y" }}</time>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 hover:text-indigo-600 transition-colors leading-tight">
+                        {{ post.title }}
+                    </h2>
+                    <p class="text-slate-500 text-lg leading-relaxed italic">
+                        {{ post.content|truncatewords:40 }}
+                    </p>
+                    <a href="#" class="inline-flex items-center gap-4 text-slate-900 font-black text-sm uppercase tracking-widest group">
+                        Read full story 
+                        <div class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-indigo-600 group-hover:border-indigo-600 group-hover:text-white transition-all duration-500">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </a>
+                </div>
+            </article>
+            {% empty %}
+            <div class="text-center py-40 border-2 border-dashed border-slate-100 rounded-[60px]">
+                <div class="text-6xl mb-8 text-slate-200"><i class="fas fa-feather-pointed"></i></div>
+                <h3 class="text-2xl font-bold text-slate-400 italic">The journal is currently blank.</h3>
+                <p class="text-slate-300 mt-2">New stories are being written as we speak.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Serenix | Modern Travel Experiences</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style type="text/tailwindcss">
+        @layer base {
+            html { scroll-behavior: smooth; }
+            body { @apply font-sans bg-slate-50 text-slate-900 antialiased overflow-x-hidden; }
+        }
+        @layer components {
+            .btn-primary { @apply px-8 py-4 bg-indigo-600 text-white rounded-full font-bold text-[11px] uppercase tracking-[0.2em] hover:bg-indigo-700 transition-all duration-300 shadow-xl shadow-indigo-200; }
+        }
+
+        /* Menu Overlay Animation */
+        #menu-overlay {
+            transition: all 0.7s cubic-bezier(0.85, 0, 0.15, 1);
+            clip-path: circle(0% at calc(100% - 60px) 60px);
+        }
+        #menu-overlay.active {
+            clip-path: circle(150% at calc(100% - 60px) 60px);
+        }
+
+        /* Burger Line Animations */
+        .burger-line { @apply w-6 h-[1.5px] bg-white transition-all duration-500; }
+        .active .line-1 { transform: rotate(45deg) translate(5px, 5px); }
+        .active .line-2 { transform: rotate(-45deg) translate(0px, 0px); }
+    </style>
+</head>
+
+<body>
+    <!-- Floating Header -->
+    <header class="fixed top-0 w-full z-50 px-6 py-8 md:px-12 md:py-10 pointer-events-none">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+
+            <!-- Logo - Inline Block Black 80 -->
+            <div
+                class="pointer-events-auto bg-black/80 backdrop-blur-xl border border-white/10 px-6 py-3 rounded-2xl shadow-2xl">
+                <a href="{% url 'home' %}" class="text-xl font-black tracking-tighter text-white">
+                    SERENIX<span class="text-indigo-500">.</span>
+                </a>
+            </div>
+
+            <!-- Hamburger Button - Inline Block Black 80 -->
+            <button id="menu-toggle"
+                class="pointer-events-auto w-16 h-16 flex flex-col items-center justify-center gap-1.5 bg-black/80 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl transition-transform hover:scale-110 active:scale-95 group">
+                <span class="burger-line line-1"></span>
+                <span class="burger-line line-2"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Fullscreen Modern Overlay -->
+    <nav id="menu-overlay" class="fixed inset-0 z-[40] bg-black/95 backdrop-blur-3xl flex items-center justify-center">
+        <div class="text-center space-y-8 md:space-y-12">
+            <ul class="space-y-4 md:space-y-6">
+                <li><a href="{% url 'home' %}"
+                        class="nav-item text-4xl md:text-7xl font-bold text-white hover:text-indigo-400 hover:italic hover:font-serif transition-all duration-500 block">Home</a>
+                </li>
+                <li><a href="{% url 'package_list' %}"
+                        class="nav-item text-4xl md:text-7xl font-bold text-white hover:text-indigo-400 hover:italic hover:font-serif transition-all duration-500 block">Destinations</a>
+                </li>
+                <li><a href="{% url 'home' %}#gallery"
+                        class="nav-item text-4xl md:text-7xl font-bold text-white hover:text-indigo-400 hover:italic hover:font-serif transition-all duration-500 block">Gallery</a>
+                </li>
+                <li><a href="{% url 'blog_list' %}"
+                        class="nav-item text-4xl md:text-7xl font-bold text-white hover:text-indigo-400 hover:italic hover:font-serif transition-all duration-500 block">Journal</a>
+                </li>
+                <li><a href="{% url 'about' %}"
+                        class="nav-item text-4xl md:text-7xl font-bold text-white hover:text-indigo-400 hover:italic hover:font-serif transition-all duration-500 block">Our
+                        Story</a></li>
+            </ul>
+            <div class="pt-8">
+                <a href="{% url 'contact' %}" class="btn-primary">Reserve Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="min-h-screen">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- <footer class="bg-white py-20 px-8 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-2">
+                <div class="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tighter">Serenix<span class="text-indigo-600">.</span></div>
+                <p class="max-w-sm mb-8 text-slate-500 font-light leading-relaxed">Crafting meaningful travel experiences across the island of Sri Lanka. We specialize in bespoke journeys that blend luxury with authentic local culture.</p>
+                <div class="flex gap-6">
+                    <a href="#" class="text-slate-400 hover:text-indigo-600 transition-colors text-lg"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-indigo-600 transition-colors text-lg"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-slate-400 hover:text-indigo-600 transition-colors text-lg"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-slate-900 font-bold mb-6 uppercase tracking-[0.2em] text-[10px]">Office</h4>
+                <p class="text-sm text-slate-500 leading-loose">
+                    123 Galle Face, Colombo<br>
+                    Western Province, Sri Lanka<br>
+                    <span class="text-indigo-600 font-bold">hello@serenix.travel</span>
+                </p>
+            </div>
+            <div>
+                <h4 class="text-slate-900 font-bold mb-6 uppercase tracking-[0.2em] text-[10px]">Quick Links</h4>
+                <ul class="space-y-4 text-sm text-slate-500">
+                    <li><a href="{% url 'package_list' %}" class="hover:text-indigo-600 transition-colors">Tours</a></li>
+                    <li><a href="{% url 'blog_list' %}" class="hover:text-indigo-600 transition-colors">Journal</a></li>
+                    <li><a href="{% url 'about' %}" class="hover:text-indigo-600 transition-colors">Story</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-slate-50 text-[10px] tracking-[0.3em] uppercase text-slate-400 text-center">
+            &copy; 2026 Serenix Boutique Travels.
+        </div>
+    </footer> -->
+    <footer class="bg-white pt-28 pb-12 px-8 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto">
+            <!-- Main Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-y-16 md:gap-x-16">
+
+                <!-- Branding & Mission -->
+                <div class="md:col-span-4 space-y-6">
+                    <div class="text-2xl font-black tracking-tighter text-black">
+                        Serenix<span class="text-indigo-600">.</span>
+                    </div>
+                    <div class="space-y-3">
+                        <h5 class="text-[10px] font-bold uppercase tracking-[0.2em] text-black">Our Mission</h5>
+                        <p class="max-w-xs text-[13px] leading-relaxed text-slate-600 font-normal">
+                            Redefining luxury through immersive, culturally-significant expeditions that honor the
+                            heritage and biodiversity of Sri Lanka.
+                        </p>
+                    </div>
+                    <div class="flex gap-5 pt-2">
+                        <a href="#" class="text-black hover:text-indigo-600 transition-all duration-300"><i
+                                class="fab fa-instagram text-base"></i></a>
+                        <a href="#" class="text-black hover:text-indigo-600 transition-all duration-300"><i
+                                class="fab fa-linkedin-in text-base"></i></a>
+                        <a href="#" class="text-black hover:text-indigo-600 transition-all duration-300"><i
+                                class="fab fa-facebook-f text-base"></i></a>
+                    </div>
+                </div>
+
+                <!-- Minimalist Separator -->
+                <div class="hidden md:block md:col-span-1 border-r border-slate-100 h-40 my-auto"></div>
+
+                <!-- Navigation -->
+                <div class="md:col-span-2 space-y-6">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-black">Portfolio</h4>
+                    <ul class="space-y-3">
+                        <li><a href="{% url 'package_list' %}"
+                                class="text-[13px] font-medium text-slate-600 hover:text-black transition-colors">Wildlife
+                                Safaris</a></li>
+                        <li><a href="{% url 'package_list' %}"
+                                class="text-[13px] font-medium text-slate-600 hover:text-black transition-colors">Heritage
+                                Tours</a></li>
+                        <li><a href="{% url 'blog_list' %}"
+                                class="text-[13px] font-medium text-slate-600 hover:text-black transition-colors">Travel
+                                Journal</a></li>
+                        <li><a href="{% url 'about' %}"
+                                class="text-[13px] font-medium text-slate-600 hover:text-black transition-colors">About
+                                Serenix</a></li>
+                    </ul>
+                </div>
+
+                <!-- Operations -->
+                <div class="md:col-span-2 space-y-6">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-black">Operations</h4>
+                    <div class="space-y-5">
+                        <p class="text-[13px] font-medium text-slate-600 leading-relaxed">
+                            123 Galle Face, Colombo<br>
+                            Western Province, Sri Lanka
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Inquiries -->
+                <div class="md:col-span-3 space-y-6">
+                    <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-black">Inquiries</h4>
+                    <div class="space-y-4">
+                        <p class="text-[13px] font-medium text-slate-600 leading-relaxed">
+                            For bespoke bookings and corporate partnerships, please reach our concierge.
+                        </p>
+                        <a href="mailto:hello@serenix.travel"
+                            class="inline-block text-[14px] font-bold text-black border-b border-black pb-0.5 hover:text-indigo-600 hover:border-indigo-600 transition-all">
+                            hello@serenix.travel
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div
+                class="mt-24 pt-10 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex gap-8 text-[11px] font-semibold text-slate-500">
+                    <a href="#" class="hover:text-black transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-black transition-colors">Sustainability</a>
+                    <a href="#" class="hover:text-black transition-colors">Terms</a>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-[11px] font-bold text-black mb-1">
+                        &copy; 2026 Serenix Boutique Travels
+                    </p>
+                    <p class="text-[10px] font-medium text-slate-400 uppercase tracking-wider">
+                        SLTDA Registered Agency No. 4429 — Member of PATA
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuOverlay = document.getElementById('menu-overlay');
+
+        menuToggle.addEventListener('click', () => {
+            const isActive = menuOverlay.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+
+            if (isActive) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close on link click
+        document.querySelectorAll('.nav-item').forEach(link => {
+            link.addEventListener('click', () => {
+                menuOverlay.classList.remove('active');
+                menuToggle.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,327 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Full-Screen Official Hero -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden">
+    {% if slides %}
+    <div class="absolute inset-0 z-0">
+        <img src="{{ slides.0.image.url }}" alt="{{ slides.0.title }}" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+    {% else %}
+    <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=1920&q=80" alt="Hero"
+            class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+    </div>
+    {% endif %}
+
+    <div class="relative z-10 max-w-5xl mx-auto px-8 text-center text-white space-y-6">
+        <span
+            class="inline-block py-1.5 px-4 bg-white/10 backdrop-blur-lg rounded-full text-[10px] font-bold uppercase tracking-[0.3em] text-white/90">
+            Official Travel Partner — Sri Lanka
+        </span>
+        <h1 class="text-6xl md:text-8xl font-black tracking-tighter leading-tight">
+            {% if slides %}{{ slides.0.title }}{% else %}The Soul of the <br><span
+                class="italic font-serif text-indigo-300">Indian Ocean</span>{% endif %}
+        </h1>
+        <p class="text-lg md:text-xl text-white/80 max-w-2xl mx-auto font-medium leading-relaxed">
+            From the misty tea mountains to the golden shores, experience Sri Lanka through a lens of pure luxury and
+            authenticity.
+        </p>
+        <div class="pt-8 flex flex-wrap justify-center gap-4">
+            <a href="#tours"
+                class="px-10 py-4 bg-indigo-600 text-white rounded-full font-bold text-[11px] uppercase tracking-widest hover:bg-white hover:text-indigo-600 transition-all duration-500 shadow-2xl">
+                Explore Collections
+            </a>
+            <a href="#about-lanka"
+                class="px-10 py-4 bg-white/10 backdrop-blur-md text-white rounded-full font-bold text-[11px] uppercase tracking-widest hover:bg-white/20 transition-all duration-500">
+                Discover the Island
+            </a>
+        </div>
+    </div>
+
+    <!-- Trust Badges -->
+    <div
+        class="absolute bottom-10 left-1/2 -translate-x-1/2 w-full max-w-4xl px-8 hidden lg:flex justify-between items-center text-white/40 text-[9px] font-bold uppercase tracking-[0.2em]">
+        <div class="flex items-center gap-2"><i class="fas fa-award text-indigo-400"></i> SLTDA Registered Agency</div>
+        <div class="flex items-center gap-2"><i class="fas fa-shield-halved text-indigo-400"></i> Certified Safety
+            Protocols</div>
+        <div class="flex items-center gap-2"><i class="fas fa-leaf text-indigo-400"></i> Sustainable Luxury Member</div>
+    </div>
+</section>
+
+<!-- Section: Sri Lanka Heritage & Pulse (Static Data) -->
+<section id="about-lanka" class="py-32 px-8 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div class="space-y-8">
+                <div class="space-y-4">
+                    <span class="text-indigo-600 font-bold uppercase tracking-[0.3em] text-[10px]">Island Profile</span>
+                    <h2 class="text-5xl font-black text-slate-900 tracking-tight leading-none">A Land of Infinite
+                        <br><span class="text-indigo-600 italic font-serif font-normal">Wonders.</span>
+                    </h2>
+                </div>
+                <p class="text-slate-500 text-lg leading-relaxed font-light">
+                    Sri Lanka is not just a destination; it’s a living mosaic. Home to **8 UNESCO World Heritage
+                    Sites**, it offers a rare density of experience—where you can witness the world’s largest land
+                    mammal (the Elephant) and the largest sea mammal (the Blue Whale) within the same 24 hours.
+                </p>
+                <div class="grid grid-cols-2 gap-10">
+                    <div class="space-y-2">
+                        <span class="text-3xl font-black text-slate-900">2,500+</span>
+                        <p class="text-xs uppercase tracking-widest text-slate-400 font-bold">Years of History</p>
+                    </div>
+                    <div class="space-y-2">
+                        <span class="text-3xl font-black text-slate-900">26</span>
+                        <p class="text-xs uppercase tracking-widest text-slate-400 font-bold">National Parks</p>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=800&q=80"
+                        alt="Sigiriya" class="w-full h-full object-cover">
+                </div>
+                <!-- Floating Info Card -->
+                <div
+                    class="absolute -bottom-10 -left-10 bg-black text-white p-8 rounded-3xl max-w-xs shadow-2xl hidden md:block">
+                    <h4 class="font-bold text-lg mb-2">Sigiriya Rock</h4>
+                    <p class="text-[11px] opacity-70 uppercase tracking-wider leading-relaxed">Known as the 8th Wonder
+                        of the World, this ancient fortress is the crown jewel of our Heritage Tours.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Section: Our Bespoke Services -->
+<section class="py-32 px-8 bg-slate-50">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-24 space-y-4">
+            <span class="text-indigo-600 font-bold uppercase tracking-[0.3em] text-[10px]">The Serenix Advantage</span>
+            <h2 class="text-5xl font-black text-slate-900 tracking-tighter">Bespoke Travel Engineering</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Service 1 -->
+            <div
+                class="bg-white p-12 rounded-[40px] shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100 group">
+                <div
+                    class="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-indigo-600 transition-colors">
+                    <i class="fas fa-map-location-dot text-2xl text-indigo-600 group-hover:text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Tailored Itineraries</h3>
+                <p class="text-slate-500 text-sm leading-relaxed">No two journeys are the same. We map your interests to
+                    hidden gems that standard agencies overlook.</p>
+            </div>
+            <!-- Service 2 -->
+            <div
+                class="bg-white p-12 rounded-[40px] shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100 group">
+                <div
+                    class="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-indigo-600 transition-colors">
+                    <i class="fas fa-van-shuttle text-2xl text-indigo-600 group-hover:text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Luxury Logistics</h3>
+                <p class="text-slate-500 text-sm leading-relaxed">Private chauffeurs, air-conditioned luxury fleet, and
+                    exclusive helicopter transfers across the island.</p>
+            </div>
+            <!-- Service 3 -->
+            <div
+                class="bg-white p-12 rounded-[40px] shadow-sm hover:shadow-xl transition-all duration-500 border border-slate-100 group">
+                <div
+                    class="w-16 h-16 bg-indigo-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-indigo-600 transition-colors">
+                    <i class="fas fa-concierge-bell text-2xl text-indigo-600 group-hover:text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">24/7 Concierge</h3>
+                <p class="text-slate-500 text-sm leading-relaxed">Real-time support from our local experts ensures your
+                    peace of mind from arrival to departure.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Official Tour Grid (Dynamic) -->
+<section id="tours" class="py-32 px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+            <div class="max-w-2xl">
+                <span class="text-indigo-600 font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">Signature
+                    Journeys</span>
+                <h2 class="text-5xl font-black tracking-tight text-slate-900 leading-none">Curated Collections</h2>
+            </div>
+            <a href="{% url 'package_list' %}"
+                class="text-slate-900 font-bold text-[11px] uppercase tracking-widest flex items-center gap-2 group transition-colors">
+                Browse Full Catalog <i class="fas fa-arrow-right group-hover:translate-x-2 transition-transform"></i>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {% for package in featured_packages %}
+            <div
+                class="group bg-white rounded-[48px] overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-700">
+                <div class="aspect-[16/10] overflow-hidden relative">
+                    <img src="{{ package.image.url }}" alt="{{ package.name }}"
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                    <div
+                        class="absolute top-6 right-6 py-2 px-5 bg-black/80 backdrop-blur-md rounded-full text-[9px] font-bold text-white uppercase tracking-widest">
+                        {{ package.duration }}
+                    </div>
+                </div>
+                <div class="p-10 space-y-6">
+                    <h3 class="text-2xl font-bold text-slate-900">{{ package.name }}</h3>
+                    <p class="text-slate-500 text-sm leading-relaxed line-clamp-2">{{ package.description }}</p>
+                    <div class="pt-6 border-t border-slate-50 flex items-center justify-between">
+                        <span class="text-xl font-black text-indigo-600">${{ package.price|floatformat:0 }}</span>
+                        <a href="{% url 'package_detail' package.pk %}"
+                            class="text-black font-black text-[10px] uppercase tracking-widest flex items-center gap-2">
+                            Details <i class="fas fa-chevron-right text-indigo-600"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Refined Regional Perspectives (White Aesthetic) -->
+<section class="py-32 px-8 bg-white border-t border-slate-100">
+    <div class="max-w-7xl mx-auto">
+        <div class="mb-20 space-y-4">
+            <span class="text-indigo-600 font-bold uppercase tracking-[0.3em] text-[10px]">The Sri Lanka
+                Portfolio</span>
+            <h2 class="text-4xl md:text-5xl font-black tracking-tighter text-slate-900">Regional Distinctions</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-20">
+
+            <!-- Region 1: Wildlife -->
+            <div class="space-y-6 group">
+                <div class="flex items-center gap-4">
+                    <span class="text-[10px] font-black text-indigo-600/30">01</span>
+                    <h4 class="text-indigo-600 font-bold uppercase tracking-[0.2em] text-[10px]">The Deep South</h4>
+                </div>
+                <div class="space-y-3">
+                    <p class="text-2xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">Yala &
+                        Bundala Nature Reserves</p>
+                    <p class="text-[13px] text-slate-500 leading-relaxed font-medium">
+                        Sri Lanka's premier wildlife destination. Yala Block 1 boasts the **highest leopard density
+                        globally**, while nearby Bundala offers a sanctuary for over 200 species of migratory birds and
+                        majestic elephant herds.
+                    </p>
+                </div>
+                <div class="pt-4 flex flex-col gap-2">
+                    <span class="text-[11px] font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fas fa-location-arrow text-indigo-600"></i> Signature: Dawn Leopard Safari
+                    </span>
+                    <span class="text-[11px] font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fas fa-clock text-indigo-600"></i> Best Time: February — June
+                    </span>
+                </div>
+            </div>
+
+            <!-- Region 2: Central Highlands -->
+            <div class="space-y-6 group">
+                <div class="flex items-center gap-4">
+                    <span class="text-[10px] font-black text-indigo-600/30">02</span>
+                    <h4 class="text-indigo-600 font-bold uppercase tracking-[0.2em] text-[10px]">High Country</h4>
+                </div>
+                <div class="space-y-3">
+                    <p class="text-2xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">Tea
+                        Highlands & Sacred Kandy</p>
+                    <p class="text-[13px] text-slate-500 leading-relaxed font-medium">
+                        A dramatic climb into the mist. Experience the **Temple of the Sacred Tooth Relic** in Kandy
+                        before boarding the world’s most scenic train ride toward Nuwara Eliya’s emerald tea estates and
+                        waterfalls.
+                    </p>
+                </div>
+                <div class="pt-4 flex flex-col gap-2">
+                    <span class="text-[11px] font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fas fa-location-arrow text-indigo-600"></i> Signature: Blue Train Journey
+                    </span>
+                    <span class="text-[11px] font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fas fa-clock text-indigo-600"></i> Best Time: December — April
+                    </span>
+                </div>
+            </div>
+
+            <!-- Region 3: Coastline -->
+            <div class="space-y-6 group">
+                <div class="flex items-center gap-4">
+                    <span class="text-[10px] font-black text-indigo-600/30">03</span>
+                    <h4 class="text-indigo-600 font-bold uppercase tracking-[0.2em] text-[10px]">The Golden Coast</h4>
+                </div>
+                <div class="space-y-3">
+                    <p class="text-2xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">Galle
+                        Fort & Riviera Beaches</p>
+                    <p class="text-[13px] text-slate-500 leading-relaxed font-medium">
+                        Where colonial heritage meets tropical luxury. Wander the **17th-century cobblestone streets**
+                        of Galle Fort—a UNESCO site—then retire to the turquoise bays of Mirissa for seasonal Blue Whale
+                        sightings.
+                    </p>
+                </div>
+                <div class="pt-4 flex flex-col gap-2">
+                    <span class="text-[11px] font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fas fa-location-arrow text-indigo-600"></i> Signature: Galle Fort Sunset Walk
+                    </span>
+                    <span class="text-[11px] font-bold text-slate-900 flex items-center gap-2">
+                        <i class="fas fa-clock text-indigo-600"></i> Best Time: November — April
+                    </span>
+                </div>
+            </div>
+
+        </div>ƒ
+    </div>
+</section>
+
+<!-- Professional Modern Gallery -->
+<section id="gallery" class="py-32 px-4 md:px-8 bg-white">
+    <div class="max-w-7xl mx-auto">
+        <!-- Header -->
+        <div class="flex flex-col items-center text-center mb-20 space-y-3">
+            <span class="text-indigo-600 font-bold uppercase tracking-[0.4em] text-[9px] md:text-[10px]">
+                The Visual Archive
+            </span>
+            <h2 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter">
+                Island Perspectives
+            </h2>
+            <div class="w-12 h-1 bg-indigo-600 rounded-full mt-4"></div>
+        </div>
+
+        <!-- Responsive Masonry Grid -->
+        <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+            {% for img in gallery %}
+            <div class="break-inside-avoid relative group rounded-2xl md:rounded-[32px] overflow-hidden bg-slate-100 shadow-sm transition-all duration-500 hover:shadow-2xl">
+                
+                <!-- Image Wrapper -->
+                <div class="overflow-hidden">
+                    <img src="{{ img.image.url }}" 
+                         alt="{{ img.caption }}" 
+                         class="w-full h-auto object-cover transform transition-transform duration-[1.5s] ease-out group-hover:scale-110">
+                </div>
+
+                <!-- Modern Minimalist Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6 md:p-8">
+                    
+                    <!-- Caption Pill -->
+                    <div class="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                        <span class="inline-block py-1 px-3 bg-white/20 backdrop-blur-md rounded-full text-[9px] font-bold text-white uppercase tracking-widest mb-3">
+                            Sri Lanka
+                        </span>
+                        <p class="text-white font-bold text-base md:text-lg leading-tight tracking-tight">
+                            {{ img.caption }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-span-full py-20 text-center">
+                <p class="text-slate-400 font-medium italic text-sm uppercase tracking-widest">Awaiting the next capture...</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!-- Ultra-Clean Modern Immersive Hero (Responsive across all viewports) -->
+<section class="relative h-screen w-full bg-white overflow-hidden">
+
+    <!-- Background Content: High Clarity -->
+    <div class="absolute inset-0 z-0 group">
+        <img src="{{ package.image.url }}" alt="{{ package.name }}"
+            class="w-full h-full object-cover transform scale-100 transition-transform duration-[10s] ease-out group-hover:scale-105">
+
+        <!-- Minimalist Shadow Gradient (Only at the bottom for text contrast) -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+    </div>
+
+    <!-- UI/Content Architecture -->
+    <div class="relative z-10 h-full flex flex-col items-center justify-center text-center text-white px-4 md:px-6">
+
+        <!-- Refined Cutter Badge -->
+        <div class="flex items-center gap-3 mb-4">
+            <span class="text-[9px] font-bold uppercase tracking-[0.4em] md:tracking-[0.6em] text-white/90">
+                The {{ package.duration }} Portfolio
+            </span>
+        </div>
+
+        <!-- Modern Compact Title (Responsive sizes: text-4xl on small devices to text-8xl on desktop) -->
+        <h1 class="text-4xl sm:text-5xl md:text-8xl font-black tracking-[-0.03em] md:tracking-[-0.05em] leading-[0.95] md:leading-[0.9] max-w-5xl">
+            {{ package.name }}
+        </h1>
+
+        <!-- High-End Minimalist Metadata -->
+        <div class="mt-6 md:mt-8 flex flex-col items-center gap-6">
+            <div class="flex items-center gap-4">
+                <div class="w-6 md:w-8 h-[1px] bg-white/30"></div>
+                <p class="text-[10px] font-semibold uppercase tracking-[0.3em] md:tracking-[0.4em] text-white/80">
+                    Sri Lanka <span class="mx-1 md:mx-2 text-indigo-400">/</span> Private Journey
+                </p>
+                <div class="w-6 md:w-8 h-[1px] bg-white/30"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Minimalist Scroll Interface (Hidden on Mobile for cleaner UI) -->
+    <div class="absolute bottom-10 right-10 hidden lg:flex items-center gap-4 rotate-90 origin-right">
+        <span class="text-[8px] font-bold uppercase tracking-[0.5em] text-white/40">Scroll to Explore</span>
+        <div class="w-12 h-[1px] bg-white/20"></div>
+    </div>
+</section>
+
+<!-- Content Section (Responsive paddings and grid architecture) -->
+<section class="py-16 md:py-24 px-4 sm:px-6 md:px-8 bg-white" id="details">
+    <div class="max-w-7xl mx-auto">
+        <!-- 12-Column Responsive Layout -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
+
+            <!-- Details Column (Takes 8 columns on desktop, full width on mobile) -->
+            <div class="lg:col-span-8 space-y-12 md:space-y-16">
+
+                <!-- Overview -->
+                <div class="space-y-4 md:space-y-6">
+                    <h2 class="text-2xl md:text-3xl font-black tracking-tight text-slate-900 flex items-center gap-4">
+                        Overview <div class="h-px flex-1 bg-slate-100"></div>
+                    </h2>
+                    <p class="text-slate-600 text-base md:text-lg leading-relaxed font-light">{{ package.description }}</p>
+                </div>
+
+                <!-- Itinerary -->
+                {% if package.itinerary %}
+                <div class="space-y-6 md:space-y-10">
+                    <h2 class="text-2xl md:text-3xl font-black tracking-tight text-slate-900 flex items-center gap-4">
+                        The Journey <div class="h-px flex-1 bg-slate-100"></div>
+                    </h2>
+                    <!-- Vertical baseline layout style for a cleaner look -->
+                    <div class="relative pl-4 md:pl-6 border-l-2 border-slate-100 space-y-6 text-slate-600 text-sm md:text-base leading-relaxed">
+                        {{ package.itinerary|linebreaks }}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Logistics Grid (Stacks beautifully on mobile, side-by-side on tablet/desktop) -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                    <!-- Included -->
+                    <div class="space-y-4 p-6 md:p-8 bg-slate-50 rounded-2xl md:rounded-[32px]">
+                        <h4 class="text-indigo-600 font-bold uppercase tracking-[0.2em] text-[10px] md:text-xs">Included</h4>
+                        <div class="text-slate-700 text-xs md:text-sm leading-relaxed space-y-3 font-medium">
+                            {% if package.inclusions %}
+                                {{ package.inclusions|linebreaks }}
+                            {% else %}
+                                <p class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-500 text-xs"></i> Luxury Accommodation</p>
+                                <p class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-500 text-xs"></i> Private Chauffeur & Guide</p>
+                                <p class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-500 text-xs"></i> Entrance Fees & Permits</p>
+                                <p class="flex items-center gap-2"><i class="fa-solid fa-check text-indigo-500 text-xs"></i> Daily Gourmet Breakfast</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <!-- Excluded -->
+                    <div class="space-y-4 p-6 md:p-8 bg-slate-50/50 rounded-2xl md:rounded-[32px] border border-slate-100">
+                        <h4 class="text-slate-400 font-bold uppercase tracking-[0.2em] text-[10px] md:text-xs">Excluded</h4>
+                        <div class="text-slate-500 text-xs md:text-sm leading-relaxed space-y-3 italic">
+                            {% if package.exclusions %}
+                                {{ package.exclusions|linebreaks }}
+                            {% else %}
+                                <p>International Airfare</p>
+                                <p>Travel Insurance</p>
+                                <p>Personal Expenses</p>
+                                <p>Gratuities</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Booking Sidebar (Takes 4 columns on desktop, drops cleanly underneath content on mobile) -->
+            <div class="lg:col-span-4 w-full">
+                <div class="lg:sticky lg:top-32 bg-white border border-slate-100 p-6 sm:p-8 md:p-10 rounded-3xl md:rounded-[40px] shadow-xl md:shadow-2xl shadow-indigo-50/50 space-y-8 md:space-y-10">
+                    
+                    <div class="text-center">
+                        <span class="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">Private Expedition From</span>
+                        <h3 class="text-4xl md:text-5xl font-black text-indigo-600 tracking-tighter">${{ package.price|floatformat:0 }}</h3>
+                    </div>
+
+                    {% if messages %}
+                        {% for message in messages %}
+                        <div class="p-4 bg-green-50 text-green-700 rounded-xl text-center font-semibold text-xs uppercase tracking-wider">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <!-- Custom Form Inputs Integrated Safely -->
+                    <form method="POST" class="space-y-4">
+                        {% csrf_token %}
+                        <div class="space-y-4 text-slate-800">
+                            <!-- Input Wrapper styling to control dynamic django form field spacing layout -->
+                            <div class="flex flex-col gap-4 child-inputs">
+                                {{ form.guest_name }}
+                                {{ form.guest_email }}
+                                {{ form.guest_phone }}
+                                <div class="grid grid-cols-2 gap-4">
+                                    {{ form.travel_date }}
+                                    {{ form.number_of_guests }}
+                                </div>
+                                {{ form.message }}
+                            </div>
+                        </div>
+                        
+                        <!-- Modern clean button interface -->
+                        <button type="submit" class="w-full bg-black text-white py-4 md:py-5 rounded-xl font-bold text-[11px] uppercase tracking-[0.2em] hover:bg-indigo-600 hover:shadow-lg transition-all duration-300 mt-4">
+                            Send Booking Request
+                        </button>
+                        
+                        <p class="text-[9px] text-center text-slate-400 font-bold uppercase tracking-widest mt-4">
+                            <i class="fa-solid fa-lock mr-1"></i> No immediate payment required
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Subtle globally injected style wrapper for auto-generated forms inside custom tailwind boxes -->
+<style>
+    .child-inputs input, 
+    .child-inputs textarea, 
+    .child-inputs select {
+        @apply w-full bg-slate-50 border-none rounded-xl p-4 text-sm focus:ring-2 focus:ring-indigo-600 transition-all placeholder:text-slate-400 text-slate-900;
+    }
+</style>
+{% endblock %}

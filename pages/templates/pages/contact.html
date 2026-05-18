@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="pt-48 pb-32 px-8 bg-slate-50 min-h-screen">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
+            <div class="space-y-12">
+                <div class="space-y-6">
+                    <span class="text-indigo-600 font-bold uppercase tracking-widest text-xs block">Get in Touch</span>
+                    <h1 class="text-7xl md:text-8xl font-black tracking-tighter text-slate-900 leading-tight">Start your <br><span class="text-indigo-600 italic font-serif">Journey</span>.</h1>
+                    <p class="text-xl text-slate-500 max-w-sm leading-relaxed italic">
+                        Ready to plan your escape? Our travel connoisseurs are standing by to curate your perfect itinerary.
+                    </p>
+                </div>
+                
+                <div class="space-y-8 pt-12 border-t border-slate-200">
+                    <div class="flex items-center gap-6 group cursor-pointer">
+                        <div class="w-16 h-16 rounded-2xl bg-white shadow-lg flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-500">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Email us</div>
+                            <div class="text-xl font-bold text-slate-900">hello@serenix.travel</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6 group cursor-pointer">
+                        <div class="w-16 h-16 rounded-2xl bg-white shadow-lg flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-500">
+                            <i class="fas fa-phone text-xl"></i>
+                        </div>
+                        <div>
+                            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Call us</div>
+                            <div class="text-xl font-bold text-slate-900">+94 11 234 5678</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white p-12 md:p-16 rounded-[60px] shadow-2xl border border-slate-100">
+                <form action="#" class="space-y-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Your Name</label>
+                            <input type="text" placeholder="John Doe" class="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-indigo-600 outline-none transition-all">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Email Address</label>
+                            <input type="email" placeholder="john@example.com" class="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-indigo-600 outline-none transition-all">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Destination of Interest</label>
+                        <select class="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-indigo-600 outline-none transition-all appearance-none">
+                            <option>The Cultural Triangle</option>
+                            <option>Southern Beach Escape</option>
+                            <option>Wild Leopard Safari</option>
+                            <option>Tea Country Odyssey</option>
+                        </select>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-bold text-slate-400 uppercase tracking-widest ml-1">Your Message</label>
+                        <textarea rows="5" placeholder="Tell us about your dream trip..." class="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-indigo-600 outline-none transition-all resize-none"></textarea>
+                    </div>
+                    <button type="submit" class="w-full btn-primary py-5 text-sm uppercase tracking-widest">Send Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

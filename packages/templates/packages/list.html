@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<section class="pt-40 pb-24 px-8 bg-slate-50">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-20">
+            <span class="text-indigo-600 font-bold uppercase tracking-widest text-xs mb-4 block">Curated Journeys</span>
+            <h1 class="text-5xl md:text-7xl font-black tracking-tight text-slate-900 mb-6">Our Destinations</h1>
+            <p class="text-slate-500 max-w-2xl mx-auto text-lg italic">Explore the hidden gems of Sri Lanka through our private and bespoke travel collections.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            {% for package in packages %}
+            <div class="group bg-white rounded-[40px] overflow-hidden border border-slate-100 hover:shadow-2xl transition-all duration-500">
+                <div class="aspect-[4/3] overflow-hidden relative">
+                    <img src="{{ package.image.url }}" alt="{{ package.name }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute top-6 left-6 py-1 px-4 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-widest text-slate-900 shadow-sm">
+                        {{ package.duration }}
+                    </div>
+                </div>
+                <div class="p-10">
+                    <div class="flex justify-between items-start mb-6">
+                        <h2 class="text-3xl font-bold text-slate-900 leading-tight">{{ package.name }}</h2>
+                    </div>
+                    <p class="text-slate-500 mb-8 leading-relaxed line-clamp-3 italic">{{ package.description }}</p>
+                    <div class="flex items-center justify-between pt-8 border-t border-slate-50">
+                        <div>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest block mb-1">From</span>
+                            <span class="text-2xl font-black text-indigo-600">${{ package.price|floatformat:0 }}</span>
+                        </div>
+                        <a href="{% url 'package_detail' package.pk %}" class="btn-primary py-3 px-8 text-sm">View Details</a>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-span-full py-20 text-center text-slate-400 font-medium italic">
+                Our new destinations are being curated. Check back soon.
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

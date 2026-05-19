@@ -19,7 +19,7 @@
             <article class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="{% if forloop.counter|divisibleby:2 %}lg:order-2{% endif %} relative">
                     <a href="{% url 'blog_detail' post.slug %}" class="aspect-[16/10] rounded-[60px] overflow-hidden shadow-2xl group cursor-pointer block">
-                        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+                        <img src="{{ post.image_url }}" alt="{{ post.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
                     </a>
                     <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-indigo-50 rounded-full -z-10 blur-3xl opacity-50"></div>
                 </div>

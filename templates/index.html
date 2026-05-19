@@ -6,7 +6,7 @@
 <section class="relative h-screen flex items-center justify-center overflow-hidden">
     {% if slides %}
     <div class="absolute inset-0 z-0">
-        <img src="{{ slides.0.image.url }}" alt="{{ slides.0.title }}" class="w-full h-full object-cover">
+        <img src="{{ slides.0.image_url }}" alt="{{ slides.0.title }}" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-black/40"></div>
     </div>
     {% else %}
@@ -161,7 +161,7 @@
             <div
                 class="group bg-white rounded-[48px] overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-700">
                 <div class="aspect-[16/10] overflow-hidden relative">
-                    <img src="{{ package.image.url }}" alt="{{ package.name }}"
+                    <img src="{{ package.image_url }}" alt="{{ package.name }}"
                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
                     <div
                         class="absolute top-6 right-6 py-2 px-5 bg-black/80 backdrop-blur-md rounded-full text-[9px] font-bold text-white uppercase tracking-widest">
@@ -271,7 +271,7 @@
                 </div>
             </div>
 
-        </div>ƒ
+        </div>
     </div>
 </section>
 
@@ -296,7 +296,7 @@
                 
                 <!-- Image Wrapper -->
                 <div class="overflow-hidden">
-                    <img src="{{ img.image.url }}" 
+                    <img src="{{ img.image_url }}" 
                          alt="{{ img.caption }}" 
                          class="w-full h-auto object-cover transform transition-transform duration-[1.5s] ease-out group-hover:scale-110">
                 </div>

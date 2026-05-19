@@ -4,7 +4,16 @@ from cloudinary.models import CloudinaryField
 class HeroSlider(models.Model):
     title = models.CharField(max_length=150)
     sub_title = models.CharField(max_length=250)
-    image = CloudinaryField('image')
+    image = CloudinaryField('image', null=True, blank=True)
+    image_link = models.URLField(max_length=1000, blank=True, null=True, help_text="Or paste a direct image URL link instead of uploading an image file")
+
+    @property
+    def image_url(self):
+        if self.image_link:
+            return self.image_link
+        elif self.image:
+            return self.image.url
+        return ""
 
     def __str__(self):
         return self.title
@@ -17,8 +26,17 @@ class TourPackage(models.Model):
     itinerary = models.TextField(null=True, blank=True)
     inclusions = models.TextField(null=True, blank=True)
     exclusions = models.TextField(null=True, blank=True)
-    image = CloudinaryField('image')
+    image = CloudinaryField('image', null=True, blank=True)
+    image_link = models.URLField(max_length=1000, blank=True, null=True, help_text="Or paste a direct image URL link instead of uploading an image file")
     is_featured = models.BooleanField(default=False)
+
+    @property
+    def image_url(self):
+        if self.image_link:
+            return self.image_link
+        elif self.image:
+            return self.image.url
+        return ""
 
     def __str__(self):
         return self.name

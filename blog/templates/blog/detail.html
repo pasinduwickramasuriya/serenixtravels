@@ -15,9 +15,9 @@
             </h1>
         </div>
 
-        {% if post.image %}
+        {% if post.image_url %}
         <div class="aspect-[21/9] rounded-[40px] overflow-hidden shadow-2xl relative mb-16">
-            <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full h-full object-cover">
+            <img src="{{ post.image_url }}" alt="{{ post.title }}" class="w-full h-full object-cover">
         </div>
         {% endif %}
     </header>

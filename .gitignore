@@ -1,17 +1,19 @@
-# Python
+# Python cache and compiled files
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyc
+*.pyo
+*.pyd
 
-# Django
-*.log
-local_settings.py
+# Django local database and media
 db.sqlite3
 db.sqlite3-journal
 media/
 staticfiles/
+*.log
 
-# Environments
+# Environment variables and virtual environments
 .env
 .venv
 env/
@@ -20,10 +22,21 @@ ENV/
 env.bak/
 venv.bak/
 
-# IDE / Editor
+# Vercel build output
+.vercel/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and editors
 .idea/
 .vscode/
 *.swp
 *.swo
 *~
-.DS_Store

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<article class="bg-white pt-32 pb-24">
+    <!-- Hero Section -->
+    <header class="relative px-8 lg:px-0 max-w-5xl mx-auto mb-16">
+        <div class="text-center mb-12">
+            <div class="flex items-center justify-center gap-4 mb-6">
+                <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-indigo-600 bg-indigo-50 py-1 px-4 rounded-full">Article</span>
+                <time class="text-xs font-bold text-slate-400 uppercase tracking-widest">{{ post.created_at|date:"M d, Y" }}</time>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-black tracking-tight text-slate-900 leading-tight mb-8">
+                {{ post.title }}
+            </h1>
+        </div>
+
+        {% if post.image %}
+        <div class="aspect-[21/9] rounded-[40px] overflow-hidden shadow-2xl relative mb-16">
+            <img src="{{ post.image.url }}" alt="{{ post.title }}" class="w-full h-full object-cover">
+        </div>
+        {% endif %}
+    </header>
+
+    <!-- Content Section -->
+    <div class="px-8 lg:px-0 max-w-3xl mx-auto">
+        <div class="prose prose-lg md:prose-xl prose-indigo max-w-none prose-headings:font-black prose-headings:tracking-tight prose-a:font-bold prose-a:text-indigo-600 hover:prose-a:text-indigo-500">
+            {{ post.content|linebreaks }}
+        </div>
+        
+        <div class="mt-20 pt-10 border-t border-slate-100 text-center">
+            <a href="{% url 'blog_list' %}" class="inline-flex items-center gap-4 text-slate-900 font-black text-sm uppercase tracking-widest group">
+                <div class="w-12 h-12 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-indigo-600 group-hover:border-indigo-600 group-hover:text-white transition-all duration-500">
+                    <i class="fas fa-arrow-left"></i>
+                </div>
+                Back to stories
+            </a>
+        </div>
+    </div>
+</article>
+{% endblock %}

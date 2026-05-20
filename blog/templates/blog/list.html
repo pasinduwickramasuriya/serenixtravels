@@ -1,6 +1,53 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block seo_title %}Sri Lanka Travel Blog & Journal | Stories & Tips | Serenix Travels{% endblock %}
+{% block meta_description %}Read the Serenix Travels boutique journal. Discover travel stories, local insights, wildlife guides, and tips from travel specialists in Sri Lanka.{% endblock %}
+{% block meta_keywords %}Sri Lanka travel blog, Ceylon travel stories, Sri Lanka travel tips, Yala safari guide, Galle Fort blog{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Blog",
+      "@id": "{{ request.build_absolute_uri }}#blog",
+      "url": "{{ request.build_absolute_uri }}",
+      "name": "Sri Lanka Travel Blog & Journal | Serenix Travels",
+      "description": "Read the Serenix Travels boutique journal. Discover travel stories, local insights, wildlife guides, and tips from travel specialists in Sri Lanka.",
+      "publisher": {
+        "@type": "TravelAgency",
+        "name": "Serenix Boutique Travels",
+        "telephone": "+94112345678"
+      },
+      "breadcrumb": {
+        "@id": "{{ request.build_absolute_uri }}#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{ request.build_absolute_uri }}#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'home' %}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Travel Journal",
+          "item": "{{ request.build_absolute_uri }}"
+        }
+      ]
+    }
+  ]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <section class="pt-40 pb-24 px-8 bg-white">
     <div class="max-w-7xl mx-auto">
@@ -19,7 +66,7 @@
             <article class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                 <div class="{% if forloop.counter|divisibleby:2 %}lg:order-2{% endif %} relative">
                     <a href="{% url 'blog_detail' post.slug %}" class="aspect-[16/10] rounded-[60px] overflow-hidden shadow-2xl group cursor-pointer block">
-                        <img src="{{ post.image_url }}" alt="{{ post.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+                        <img src="{{ post.image_url }}" alt="{{ post.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" loading="lazy">
                     </a>
                     <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-indigo-50 rounded-full -z-10 blur-3xl opacity-50"></div>
                 </div>

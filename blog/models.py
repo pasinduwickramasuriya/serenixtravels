@@ -26,6 +26,10 @@ class BlogPost(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('blog_detail', args=[self.slug])
+
 class GalleryImage(models.Model):
     caption = models.CharField(max_length=100)
     image = CloudinaryField('image', null=True, blank=True)

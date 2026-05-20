@@ -1,6 +1,48 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block seo_title %}Contact Our Concierge | Plan Your Custom Sri Lanka Trip | Serenix Travels{% endblock %}
+{% block meta_description %}Contact the Serenix Boutique Travels concierge team. Let our destination specialists curate your bespoke private holiday in Sri Lanka. Inquire today.{% endblock %}
+{% block meta_keywords %}contact Serenix travels, book Sri Lanka tour, custom travel inquiries Ceylon, Sri Lanka travel planners{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ContactPage",
+      "@id": "{{ request.build_absolute_uri }}#webpage",
+      "url": "{{ request.build_absolute_uri }}",
+      "name": "Contact Our Concierge | Plan Your Custom Sri Lanka Trip | Serenix Travels",
+      "description": "Contact the Serenix Boutique Travels concierge team. Let our destination specialists curate your bespoke private holiday in Sri Lanka. Inquire today.",
+      "breadcrumb": {
+        "@id": "{{ request.build_absolute_uri }}#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{ request.build_absolute_uri }}#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'home' %}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contact Concierge",
+          "item": "{{ request.build_absolute_uri }}"
+        }
+      ]
+    }
+  ]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <section class="pt-48 pb-32 px-8 bg-slate-50 min-h-screen">
     <div class="max-w-7xl mx-auto">

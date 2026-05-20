@@ -4,7 +4,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sri Lanaka Travel| Modern Travel Experiences with serenix</title>
+
+    <!-- Primary SEO Metadata -->
+    <title>{% block seo_title %}{% block title %}Sri Lanka Travel | Modern Boutique Experiences | Serenix Travels{%
+        endblock %}{% endblock %}</title>
+    <meta name="description"
+        content="{% block meta_description %}Discover Sri Lanka with Serenix Boutique Travels. Handcrafted luxury tours, wildlife safaris, heritage exploration, and bespoke island getaways.{% endblock %}">
+    <meta name="keywords"
+        content="{% block meta_keywords %}Sri Lanka travel, luxury Sri Lanka tours, Ceylon travel agency, Serenix boutique travels, wildlife safaris Sri Lanka, Sri Lanka heritage tours{% endblock %}">
+    <meta name="robots" content="{% block meta_robots %}index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1{% endblock %}">
+    <meta name="author" content="Serenix Boutique Travels">
+    {% block google_verification %}{% endblock %}
+    <link rel="canonical" href="{% block canonical_url %}{{ request.build_absolute_uri }}{% endblock %}">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:title"
+        content="{% block og_title %}{% block title_og %}Sri Lanka Travel | Modern Boutique Experiences | Serenix Travels{% endblock %}{% endblock %}">
+    <meta property="og:description"
+        content="{% block og_description %}{% block desc_og %}Discover Sri Lanka with Serenix Boutique Travels. Handcrafted luxury tours, wildlife safaris, heritage exploration, and bespoke island getaways.{% endblock %}{% endblock %}">
+    <meta property="og:image"
+        content="{% block og_image %}https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=1200&q=80{% endblock %}">
+    <meta property="og:url" content="{% block og_url %}{{ request.build_absolute_uri }}{% endblock %}">
+    <meta property="og:site_name" content="Serenix Boutique Travels">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="{% block twitter_card %}summary_large_image{% endblock %}">
+    <meta name="twitter:title"
+        content="{% block twitter_title %}{% block title_twitter %}Sri Lanka Travel | Modern Boutique Experiences | Serenix Travels{% endblock %}{% endblock %}">
+    <meta name="twitter:description"
+        content="{% block twitter_description %}{% block desc_twitter %}Discover Sri Lanka with Serenix Boutique Travels. Handcrafted luxury tours, wildlife safaris, heritage exploration, and bespoke island getaways.{% endblock %}{% endblock %}">
+    <meta name="twitter:image"
+        content="{% block twitter_image %}https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=1200&q=80{% endblock %}">
+
+    <!-- Structured Data (JSON-LD) -->
+    {% block structured_data %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TravelAgency",
+      "name": "Serenix Boutique Travels",
+      "image": "https://images.unsplash.com/photo-1552465011-b4e21bf6e79a?auto=format&fit=crop&w=1200&q=80",
+      "@id": "{{ request.build_absolute_uri }}",
+      "url": "{{ request.build_absolute_uri }}",
+      "telephone": "+94 778 158 004",
+      "priceRange": "$$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Wickrama Kasingama",
+        "addressLocality": "Tissamaharama",
+        "addressRegion": "southeren Province",
+        "postalCode": "82600",
+        "addressCountry": "LK"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 6.9271,
+        "longitude": 79.8483
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "00:00",
+        "closes": "23:59"
+      },
+      "sameAs": [
+        "https://www.instagram.com/serenix.travel",
+        "https://www.linkedin.com/company/serenix-travel",
+        "https://www.facebook.com/serenixtravels"
+      ]
+    }
+    </script>
+    {% endblock %}
+
+    {% block extra_head %}{% endblock %}
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -102,39 +184,6 @@
     <main class="min-h-screen">
         {% block content %}{% endblock %}
     </main>
-
-    <!-- <footer class="bg-white py-20 px-8 border-t border-slate-100">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div class="col-span-1 md:col-span-2">
-                <div class="text-2xl font-black text-slate-900 mb-6 uppercase tracking-tighter">Serenix<span class="text-indigo-600">.</span></div>
-                <p class="max-w-sm mb-8 text-slate-500 font-light leading-relaxed">Crafting meaningful travel experiences across the island of Sri Lanka. We specialize in bespoke journeys that blend luxury with authentic local culture.</p>
-                <div class="flex gap-6">
-                    <a href="#" class="text-slate-400 hover:text-indigo-600 transition-colors text-lg"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-slate-400 hover:text-indigo-600 transition-colors text-lg"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-slate-400 hover:text-indigo-600 transition-colors text-lg"><i class="fab fa-facebook-f"></i></a>
-                </div>
-            </div>
-            <div>
-                <h4 class="text-slate-900 font-bold mb-6 uppercase tracking-[0.2em] text-[10px]">Office</h4>
-                <p class="text-sm text-slate-500 leading-loose">
-                    123 Galle Face, Colombo<br>
-                    Western Province, Sri Lanka<br>
-                    <span class="text-indigo-600 font-bold">hello@serenix.travel</span>
-                </p>
-            </div>
-            <div>
-                <h4 class="text-slate-900 font-bold mb-6 uppercase tracking-[0.2em] text-[10px]">Quick Links</h4>
-                <ul class="space-y-4 text-sm text-slate-500">
-                    <li><a href="{% url 'package_list' %}" class="hover:text-indigo-600 transition-colors">Tours</a></li>
-                    <li><a href="{% url 'blog_list' %}" class="hover:text-indigo-600 transition-colors">Journal</a></li>
-                    <li><a href="{% url 'about' %}" class="hover:text-indigo-600 transition-colors">Story</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto mt-20 pt-8 border-t border-slate-50 text-[10px] tracking-[0.3em] uppercase text-slate-400 text-center">
-            &copy; 2026 Serenix Boutique Travels.
-        </div>
-    </footer> -->
     <footer class="bg-white pt-28 pb-12 px-8 border-t border-slate-200">
         <div class="max-w-7xl mx-auto">
             <!-- Main Grid -->
@@ -189,8 +238,8 @@
                     <h4 class="text-[10px] font-bold uppercase tracking-[0.2em] text-black">Operations</h4>
                     <div class="space-y-5">
                         <p class="text-[13px] font-medium text-slate-600 leading-relaxed">
-                            123 Galle Face, Colombo<br>
-                            Western Province, Sri Lanka
+                            Wickrama Kasingama<br>
+                            Tissamaharama, Southern Province
                         </p>
                     </div>
                 </div>
@@ -205,6 +254,11 @@
                         <a href="mailto:hello@serenix.travel"
                             class="inline-block text-[14px] font-bold text-black border-b border-black pb-0.5 hover:text-indigo-600 hover:border-indigo-600 transition-all">
                             hello@serenix.travel
+                        </a>
+                        <br>
+                        <a href="tel:+94778158004"
+                            class="inline-block text-[14px] font-bold text-black border-b border-black pb-0.5 hover:text-indigo-600 hover:border-indigo-600 transition-all mt-2">
+                            +94 778 158 004
                         </a>
                     </div>
                 </div>

@@ -1,6 +1,64 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block seo_title %}Luxury Sri Lanka Tour Packages & Custom Itineraries | Serenix Travels{% endblock %}
+{% block meta_description %}Browse our curated collection of luxury Sri Lanka travel packages. Featuring private wildlife safaris, ancient heritage tours, tea highland odysseys, and beach retreats.{% endblock %}
+{% block meta_keywords %}Sri Lanka tour packages, luxury Ceylon itineraries, wildlife tours Sri Lanka, Galle beach holiday, Sri Lanka historical sites, private guide Sri Lanka{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "{{ request.build_absolute_uri }}#webpage",
+      "url": "{{ request.build_absolute_uri }}",
+      "name": "Luxury Sri Lanka Tour Packages & Custom Itineraries | Serenix Travels",
+      "description": "Browse our curated collection of luxury Sri Lanka travel packages. Featuring private wildlife safaris, ancient heritage tours, tea highland odysseys, and beach retreats.",
+      "breadcrumb": {
+        "@id": "{{ request.build_absolute_uri }}#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{ request.build_absolute_uri }}#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'home' %}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tour Packages",
+          "item": "{{ request.build_absolute_uri }}"
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "name": "Serenix Travels Signature Collections",
+      "numberOfItems": {{ packages|length }},
+      "itemListElement": [
+        {% for package in packages %}
+        {
+          "@type": "ListItem",
+          "position": {{ forloop.counter }},
+          "url": "{{ request.scheme }}://{{ request.get_host }}{{ package.get_absolute_url }}",
+          "name": "{{ package.name }}",
+          "description": "{{ package.description|truncatewords:20|escapejs }}"
+        }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+      ]
+    }
+  ]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <section class="pt-40 pb-24 px-8 bg-slate-50">
     <div class="max-w-7xl mx-auto">
@@ -14,7 +72,7 @@
             {% for package in packages %}
             <div class="group bg-white rounded-[40px] overflow-hidden border border-slate-100 hover:shadow-2xl transition-all duration-500">
                 <div class="aspect-[4/3] overflow-hidden relative">
-                    <img src="{{ package.image_url }}" alt="{{ package.name }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <img src="{{ package.image_url }}" alt="{{ package.name }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy">
                     <div class="absolute top-6 left-6 py-1 px-4 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-widest text-slate-900 shadow-sm">
                         {{ package.duration }}
                     </div>

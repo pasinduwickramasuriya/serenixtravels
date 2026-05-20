@@ -1,6 +1,96 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block seo_title %}{{ package.name }} | {{ package.duration }} Private Luxury Journey | Serenix Travels{% endblock %}
+{% block meta_description %}{{ package.description|truncatewords:30 }}{% endblock %}
+{% block meta_keywords %}{{ package.name }}, Sri Lanka private tour, {{ package.duration }} Ceylon itinerary, boutique luxury package{% endblock %}
+
+{% block og_title %}{{ package.name }} | {{ package.duration }} Luxury Journey{% endblock %}
+{% block og_description %}{{ package.description|truncatewords:25 }}{% endblock %}
+{% block og_image %}{{ package.image_url }}{% endblock %}
+
+{% block twitter_title %}{{ package.name }} | {{ package.duration }} Luxury Journey{% endblock %}
+{% block twitter_description %}{{ package.description|truncatewords:25 }}{% endblock %}
+{% block twitter_image %}{{ package.image_url }}{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TouristTrip",
+      "@id": "{{ request.build_absolute_uri }}#trip",
+      "name": "{{ package.name|escapejs }}",
+      "description": "{{ package.description|escapejs }}",
+      "duration": "P{{ package.duration|slice:':1' }}D",
+      "touristType": [
+        "Luxury Travelers",
+        "Nature and Culture Enthusiasts"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "price": "{{ package.price }}",
+        "availability": "https://schema.org/InStock",
+        "validFrom": "2026-01-01",
+        "url": "{{ request.build_absolute_uri }}",
+        "offeredBy": {
+          "@type": "TravelAgency",
+          "name": "Serenix Boutique Travels",
+          "telephone": "+94112345678"
+        }
+      },
+      "itinerary": {
+        "@type": "ItemList",
+        "name": "Itinerary Highlights",
+        "description": "Highlights of the {{ package.name|escapejs }} private tour."
+      }
+    },
+    {
+      "@type": "Product",
+      "@id": "{{ request.build_absolute_uri }}#product",
+      "name": "{{ package.name|escapejs }}",
+      "image": "{{ package.image_url }}",
+      "description": "{{ package.description|escapejs }}",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USD",
+        "price": "{{ package.price }}",
+        "itemCondition": "https://schema.org/NewCondition",
+        "availability": "https://schema.org/InStock",
+        "url": "{{ request.build_absolute_uri }}"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{ request.build_absolute_uri }}#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'home' %}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Destinations",
+          "item": "{{ request.scheme }}://{{ request.get_host }}{% url 'package_list' %}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "{{ package.name|escapejs }}",
+          "item": "{{ request.build_absolute_uri }}"
+        }
+      ]
+    }
+  ]
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <!-- Ultra-Clean Modern Immersive Hero (Responsive across all viewports) -->
 <section class="relative h-screen w-full bg-white overflow-hidden">

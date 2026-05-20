@@ -41,6 +41,10 @@ class TourPackage(models.Model):
     def __str__(self):
         return self.name
 
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('package_detail', args=[self.pk])
+
 class Booking(models.Model):
     package = models.ForeignKey(TourPackage, on_delete=models.CASCADE, related_name='bookings')
     guest_name = models.CharField(max_length=200)

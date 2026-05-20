@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block seo_title %}Sri Lanka Boutique Travel | Handcrafted Luxury Tours | Serenix Travels{% endblock %}
+{% block meta_description %}Experience Sri Lanka like never before. Serenix Boutique Travels offers luxury private journeys, wildlife safaris, heritage tours, and bespoke beach retreats with 24/7 concierge support.{% endblock %}
+{% block meta_keywords %}Sri Lanka boutique travel, luxury Sri Lanka tours, bespoke Ceylon tours, Sri Lanka private driver, Ceylon holiday package, Galle Fort tour, Sigiriya tour, leopard safari Yala{% endblock %}
+
 {% block content %}
 <!-- Full-Screen Official Hero -->
 <section class="relative h-screen flex items-center justify-center overflow-hidden">
@@ -82,7 +86,7 @@
             <div class="relative">
                 <div class="aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl">
                     <img src="https://images.unsplash.com/photo-1546708973-b339540b5162?auto=format&fit=crop&w=800&q=80"
-                        alt="Sigiriya" class="w-full h-full object-cover">
+                        alt="Sigiriya" class="w-full h-full object-cover" loading="lazy">
                 </div>
                 <!-- Floating Info Card -->
                 <div
@@ -162,7 +166,7 @@
                 class="group bg-white rounded-[48px] overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-700">
                 <div class="aspect-[16/10] overflow-hidden relative">
                     <img src="{{ package.image_url }}" alt="{{ package.name }}"
-                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000">
+                        class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" loading="lazy">
                     <div
                         class="absolute top-6 right-6 py-2 px-5 bg-black/80 backdrop-blur-md rounded-full text-[9px] font-bold text-white uppercase tracking-widest">
                         {{ package.duration }}
@@ -298,7 +302,7 @@
                 <div class="overflow-hidden">
                     <img src="{{ img.image_url }}" 
                          alt="{{ img.caption }}" 
-                         class="w-full h-auto object-cover transform transition-transform duration-[1.5s] ease-out group-hover:scale-110">
+                         class="w-full h-auto object-cover transform transition-transform duration-[1.5s] ease-out group-hover:scale-110" loading="lazy">
                 </div>
 
                 <!-- Modern Minimalist Overlay -->
